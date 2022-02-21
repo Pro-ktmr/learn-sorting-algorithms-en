@@ -39,11 +39,11 @@ export default class TreeSortPractice extends SortPractice {
             this.canvas.addCard(card);
         }
         var compareText = new Text();
-        compareText.setText(`${Config.wordCompare}：0 回`);
+        compareText.setText(`${Config.wordCompare}: 0 times`);
         compareText.setCoordinate(200, 640);
         this.canvas.addText(compareText);
         var swapText = new Text();
-        swapText.setText(`${Config.wordSwap}：0 回`);
+        swapText.setText(`${Config.wordSwap}: 0 times`);
         swapText.setCoordinate(200, 680);
         this.canvas.addText(swapText);
     }

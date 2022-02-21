@@ -29,7 +29,7 @@ export default class SortPracticeStrict extends SortPractice {
             }
 
             var text = this.canvas.getText(0);
-            text.text = `${Config.wordCompare}：${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} 回`;
+            text.text = `${Config.wordCompare}: ${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} times`;
             this.operationLog.push(['comparePlus']);
 
             if (this.step < this.correctOperations.length
@@ -53,7 +53,7 @@ export default class SortPracticeStrict extends SortPractice {
         anotherCard.moveImmediatelyTo(tmpX, tmpY);
 
         var text = this.canvas.getText(1);
-        text.text = `${Config.wordSwap}：${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} 回`;
+        text.text = `${Config.wordSwap}: ${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} times`;
 
         this.operationLog.push(['swapCards', card, anotherCard]);
 
@@ -108,7 +108,7 @@ export default class SortPracticeStrict extends SortPractice {
         }
         if (operation[0] == 'comparePlus') {
             var text = this.canvas.getText(0);
-            text.text = `${Config.wordCompare}：${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} 回`;
+            text.text = `${Config.wordCompare}: ${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} times`;
             this.back();
         }
         if (operation[0] == 'turnCard') {
@@ -135,7 +135,7 @@ export default class SortPracticeStrict extends SortPractice {
         anotherCard.moveTo(tmpX, tmpY);
 
         var text = this.canvas.getText(1);
-        text.text = `${Config.wordSwap}：${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} 回`;
+        text.text = `${Config.wordSwap}: ${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} times`;
     }
 
     backFixCard(card) {

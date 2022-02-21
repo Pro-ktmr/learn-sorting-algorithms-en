@@ -36,7 +36,7 @@ export default class HeapSortPractice extends SortPracticeStrict {
     advanceInternal() {
         if (this.correctOperations[this.step][0][0] == 'compare') {
             var text = this.canvas.getText(0);
-            text.setText('比較：' + (parseInt(text.text.replace(/[^0-9]/g, '')) + 1) + ' 回');
+            text.setText('Comparison: ' + (parseInt(text.text.replace(/[^0-9]/g, '')) + 1) + ' times');
         }
         if (this.correctOperations[this.step][0][0] == 'swap') {
             var itr = this.correctOperations[this.step][0][1].values();
@@ -46,7 +46,7 @@ export default class HeapSortPractice extends SortPracticeStrict {
             c1.moveImmediatelyTo(c2.getX(), c2.getY());
             c2.moveImmediatelyTo(c1X, c1Y);
             var text = this.canvas.getText(1);
-            text.setText('交換：' + (parseInt(text.text.replace(/[^0-9]/g, '')) + 1) + ' 回');
+            text.setText('Swapping: ' + (parseInt(text.text.replace(/[^0-9]/g, '')) + 1) + ' times');
         }
         if (this.correctOperations[this.step][0][0] == 'fix') {
             var card = this.canvas.getCard(this.correctOperations[this.step][0][1]);
@@ -71,11 +71,11 @@ export default class HeapSortPractice extends SortPracticeStrict {
             this.canvas.addCard(card);
         }
         var compareText = new Text();
-        compareText.setText(`${Config.wordCompare}：0 回`);
+        compareText.setText(`${Config.wordCompare}: 0 times`);
         compareText.setCoordinate(200, 640);
         this.canvas.addText(compareText);
         var swapText = new Text();
-        swapText.setText(`${Config.wordSwap}：0 回`);
+        swapText.setText(`${Config.wordSwap}: 0 times`);
         swapText.setCoordinate(200, 680);
         this.canvas.addText(swapText);
 
@@ -351,7 +351,7 @@ export default class HeapSortPractice extends SortPracticeStrict {
             }
 
             var text = this.canvas.getText(0);
-            text.setText('比較：' + (parseInt(text.text.replace(/[^0-9]/g, '')) + 1) + ' 回');
+            text.setText('Comparison: ' + (parseInt(text.text.replace(/[^0-9]/g, '')) + 1) + ' times');
 
             if (this.step < this.correctOperations.length
                 && operation[0] == 'compare'
@@ -375,7 +375,7 @@ export default class HeapSortPractice extends SortPracticeStrict {
         anotherCard.moveImmediatelyTo(tmpX, tmpY);
 
         var text = this.canvas.getText(1);
-        text.setText('交換：' + (parseInt(text.text.replace(/[^0-9]/g, '')) + 1) + ' 回');
+        text.setText('Swapping: ' + (parseInt(text.text.replace(/[^0-9]/g, '')) + 1) + ' times');
 
         this.operationLog.push(['swapCards', card, anotherCard]);
 

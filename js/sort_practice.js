@@ -94,7 +94,7 @@ export default class SortPractice extends Practice {
             if (this.lastMeaningfulOperation()[0] == 'compareCards'
                 && Utility.compareSets(this.lastMeaningfulOperation()[1], this.getIndexOfCardsOpen())) return;
             var text = this.canvas.getText(0);
-            text.text = `${Config.wordCompare}：${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} 回`;
+            text.text = `${Config.wordCompare}: ${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} times`;
             this.operationLog.push(['compareCards', this.getIndexOfCardsOpen()]);
         }
     }
@@ -105,7 +105,7 @@ export default class SortPractice extends Practice {
         anotherCard.moveImmediatelyTo(tmpX, tmpY);
 
         var text = this.canvas.getText(1);
-        text.text = `${Config.wordSwap}：${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} 回`;
+        text.text = `${Config.wordSwap}: ${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} times`;
 
         this.operationLog.push(['swapCards', card, anotherCard]);
     }
@@ -183,7 +183,7 @@ export default class SortPractice extends Practice {
         }
         if (operation[0] == 'compareCards') {
             var text = this.canvas.getText(0);
-            text.text = `${Config.wordCompare}：${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} 回`;
+            text.text = `${Config.wordCompare}: ${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} times`;
             this.back();
         }
     }
@@ -198,7 +198,7 @@ export default class SortPractice extends Practice {
         anotherCard.moveTo(tmpX, tmpY);
 
         var text = this.canvas.getText(1);
-        text.text = `${Config.wordSwap}：${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} 回`;
+        text.text = `${Config.wordSwap}: ${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} times`;
     }
 
     backFixCard(card) {

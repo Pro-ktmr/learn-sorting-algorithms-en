@@ -4,14 +4,14 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/main.js" type="module"></script>
-    <title>実習環境</title>
+    <title>Practice</title>
   </head>
   <body>
     <div class="bg_pattern Polka"></div>
 
     <div class="title_bar">
       <span class="btn_page_back" onclick="window.history.back()"></span>
-      <span id="title">実習環境</span>
+      <span id="title">Practice</span>
     </div>
 
     <div class="container">
@@ -24,27 +24,27 @@
 
           <div class="control practice">
             <div class="row">
-              <input type="button" value="シャッフル" title="シャッフルする" onclick="practiceShuffle()" />　
-              <input type="button" value="最初に戻す" title="最初に戻す" onclick="practiceBegin()" />　
-              <input type="button" value="1 つ戻す" title="1 つ戻す" onclick="practiceBack()" />
+              <input type="button" value="Shuffle" title="Shuffle" onclick="practiceShuffle()" />　
+              <input type="button" value="Restart from Beginning" title="Restart from Beginning" onclick="practiceBegin()" />　
+              <input type="button" value="Go Back" title="Go Back" onclick="practiceBack()" />
             </div>
             <div class="row">
-              <input type="text" id="practice_input" placeholder="コンマで区切って入力" size="16" list="practice_input_example" />
+              <input type="text" id="common_input" placeholder="Split with comma (e.g. 5,3,1,4,2)" size="24" list="common_input_example" />
               <datalist id="practice_input_example">
-                <option value="パターン1-1"></option>
-                <option value="パターン1-2"></option>
-                <option value="パターン1-3"></option>
-                <option value="パターン2-1"></option>
-                <option value="パターン2-2"></option>
-                <option value="パターン2-3"></option>
-                <option value="パターン3-1"></option>
-                <option value="パターン3-2"></option>
-                <option value="パターン3-3"></option>
-                <option value="パターン3-1(途中から)"></option>
-                <option value="パターン3-2(途中から)"></option>
-                <option value="パターン3-3(途中から)"></option>
+                <option value="Pattern 1-1"></option>
+                <option value="Pattern 1-2"></option>
+                <option value="Pattern 1-3"></option>
+                <option value="Pattern 2-1"></option>
+                <option value="Pattern 2-2"></option>
+                <option value="Pattern 2-3"></option>
+                <option value="Pattern 3-1"></option>
+                <option value="Pattern 3-2"></option>
+                <option value="Pattern 3-3"></option>
+                <option value="Pattern 3-1 (From the middle)"></option>
+                <option value="Pattern 3-2 (From the middle)"></option>
+                <option value="Pattern 3-3 (From the middle)"></option>
               </datalist>
-              <input type="button" value="入力セット" title="入力をセットする" onclick="practiceSet('practice_input')" />
+              <input type="button" value="Set Input" title="Set Input" onclick="practiceSet('practice_input')" />
             </div>
           </div>
         </div>

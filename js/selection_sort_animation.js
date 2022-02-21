@@ -32,22 +32,22 @@ export default class SelectionSortAnimation extends SortAnimation {
             this.canvas.addCard(card);
         }
         var compareText = new Text();
-        compareText.setText(`${Config.wordCompare}：0 回`);
+        compareText.setText(`${Config.wordCompare}: 0 times`);
         compareText.setCoordinate(640, 640);
         this.canvas.addText(compareText);
         var swapText = new Text();
-        swapText.setText(`${Config.wordSwap}：0 回`);
+        swapText.setText(`${Config.wordSwap}: 0 times`);
         swapText.setCoordinate(640, 680);
         this.canvas.addText(swapText);
 
         var smallText = new Text();
-        smallText.setText('小');
-        smallText.setCoordinate(30, 560);
+        smallText.setText('Small');
+        smallText.setCoordinate(50, 560);
         smallText.setFont('24px Noto Sans JP');
         this.canvas.addText(smallText);
         var bigText = new Text();
-        bigText.setText('大');
-        bigText.setCoordinate(1250, 560);
+        bigText.setText('Large');
+        bigText.setCoordinate(1220, 560);
         bigText.setFont('32px Noto Sans JP');
         this.canvas.addText(bigText);
     }

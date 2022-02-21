@@ -17,12 +17,12 @@ var animation, practice;
 window.onload = function () {
     var algorithmName = Utility.getQuery('algorithm');
     var algorithmToTitle = {
-        'array_sort': 'フリー (配列)',
-        'tree_sort': 'フリー (木)',
-        'bubble_sort': 'バブルソート',
-        'selection_sort': '選択ソート',
-        'selection_sort_slow': '選択ソート (遅)',
-        'heap_sort': 'ヒープソート',
+        'array_sort': 'Free (Array)',
+        'tree_sort': 'Free (Tree)',
+        'bubble_sort': 'Bubble Sort',
+        'selection_sort': 'Selection Sort',
+        'selection_sort_slow': 'Selection Sort (Slow)',
+        'heap_sort': 'Heap Sort',
     };
     if (algorithmName !== null && algorithmName in algorithmToTitle) {
         document.getElementById('title').innerHTML = algorithmToTitle[algorithmName];
@@ -129,33 +129,33 @@ export function set(id) {
     var input = document.getElementById(id).value;
 
     const pattern = {
-        'パターン1-1': [65, 83, 31, 22, 59, 46, 19],
-        'パターン1-2': [92, 20, 85, 50, 37, 76, 61],
-        'パターン1-3': [87, 32, 15, 28, 75, 52, 47],
-        'パターン2-1': [55, 71, 12, 43, 80, 36, 93],
-        'パターン2-2': [40, 22, 18, 93, 51, 67, 34],
-        'パターン2-3': [43, 13, 27, 90, 88, 72, 55],
-        'パターン3-1': [62, 81, 35, 22, 51, 47, 11],
-        'パターン3-2': [26, 87, 57, 93, 34, 70, 68],
-        'パターン3-3': [19, 21, 56, 45, 97, 82, 73],
-        'パターン3-1(途中から)': [62, 81, 35, 22, 51, 47, 11],
-        'パターン3-2(途中から)': [26, 87, 57, 93, 34, 70, 68],
-        'パターン3-3(途中から)': [19, 21, 56, 45, 97, 82, 73],
+        'Pattern 1-1': [65, 83, 31, 22, 59, 46, 19],
+        'Pattern 1-2': [92, 20, 85, 50, 37, 76, 61],
+        'Pattern 1-3': [87, 32, 15, 28, 75, 52, 47],
+        'Pattern 2-1': [55, 71, 12, 43, 80, 36, 93],
+        'Pattern 2-2': [40, 22, 18, 93, 51, 67, 34],
+        'Pattern 2-3': [43, 13, 27, 90, 88, 72, 55],
+        'Pattern 3-1': [62, 81, 35, 22, 51, 47, 11],
+        'Pattern 3-2': [26, 87, 57, 93, 34, 70, 68],
+        'Pattern 3-3': [19, 21, 56, 45, 97, 82, 73],
+        'Pattern 3-1 (From the middle)': [62, 81, 35, 22, 51, 47, 11],
+        'Pattern 3-2 (From the middle)': [26, 87, 57, 93, 34, 70, 68],
+        'Pattern 3-3 (From the middle)': [19, 21, 56, 45, 97, 82, 73],
     };
     const patternOnTheWayAnimation = {
-        'パターン3-1(途中から)': 44,
-        'パターン3-2(途中から)': 49,
-        'パターン3-3(途中から)': 54,
+        'Pattern 3-1 (From the middle)': 44,
+        'Pattern 3-2 (From the middle)': 49,
+        'Pattern 3-3 (From the middle)': 54,
     };
     const patternOnTheWayPractice = {
-        'パターン3-1(途中から)': 16,
-        'パターン3-2(途中から)': 19,
-        'パターン3-3(途中から)': 22,
+        'Pattern 3-1 (From the middle)': 16,
+        'Pattern 3-2 (From the middle)': 19,
+        'Pattern 3-3 (From the middle)': 22,
     };
     if (input in pattern) {
         if (animation) {
             animation.set(pattern[input]);
-            animation.addMessage('現在の入力：' + input);
+            animation.addMessage('Current input: ' + input);
             if (input in patternOnTheWayAnimation) {
                 for (var i = 0; i < patternOnTheWayAnimation[input]; i++) {
                     animation.advance();
@@ -164,7 +164,7 @@ export function set(id) {
         }
         if (practice) {
             practice.set(pattern[input]);
-            practice.addMessage('現在の入力：' + input);
+            practice.addMessage('Current input: ' + input);
             if (input in patternOnTheWayPractice && practice.advanceInternal) {
                 for (var i = 0; i < patternOnTheWayPractice[input]; i++) {
                     practice.advanceInternal();
@@ -176,34 +176,34 @@ export function set(id) {
     }
 
     if (input == '') {
-        alert('入力を選んでから「入力セット」ボタンを押してください');
+        alert('Set input after choosing input');
         return;
     }
     var splits = input.split(',');
     if (splits.length > 7) {
-        alert('入力は 7 個までです');
+        alert('The length of input is too long');
         return;
     }
     var array = [];
     for (var s of splits) {
         var int = parseInt(s);
         if (isNaN(int)) {
-            alert('入力のフォーマットが間違っています');
+            alert('The format of input is wrong');
             return;
         }
         if (int > 999) {
-            alert('入力された数が大きすぎます');
+            alert('A number of input is too large');
             return;
         }
         array.push(parseInt(s));
     }
     if (animation) {
         animation.set(array);
-        animation.addMessage('現在の入力：' + input);
+        animation.addMessage('Current input: ' + input);
     }
     if (practice) {
         practice.set(array);
-        practice.addMessage('現在の入力：' + input);
+        practice.addMessage('Current input: ' + input);
     }
     document.getElementById(id).value = '';
 }

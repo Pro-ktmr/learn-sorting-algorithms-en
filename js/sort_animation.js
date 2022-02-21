@@ -63,14 +63,14 @@ export default class SortAnimation extends Animation {
             }
             if (action[0] == 'compare') {
                 var text = this.canvas.getText(0);
-                if (text.text.replace(/[0-9]/g, '') == `${Config.wordCompare}： 回`) {
-                    text.text = `${Config.wordCompare}：${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} 回`;
+                if (text.text.replace(/[0-9]/g, '') == `${Config.wordCompare}:  times`) {
+                    text.text = `${Config.wordCompare}: ${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} times`;
                 }
             }
             if (action[0] == 'swap') {
                 var text = this.canvas.getText(1);
-                if (text.text.replace(/[0-9]/g, '') == `${Config.wordSwap}： 回`) {
-                    text.text = `${Config.wordSwap}：${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} 回`;
+                if (text.text.replace(/[0-9]/g, '') == `${Config.wordSwap}:  times`) {
+                    text.text = `${Config.wordSwap}: ${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} times`;
                 }
             }
         }
@@ -122,14 +122,14 @@ export default class SortAnimation extends Animation {
             }
             if (action[0] == 'compare') {
                 var text = this.canvas.getText(0);
-                if (text.text.replace(/[0-9]/g, '') == `${Config.wordCompare}： 回`) {
-                    text.text = `${Config.wordCompare}：${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} 回`;
+                if (text.text.replace(/[0-9]/g, '') == `${Config.wordCompare}:  times`) {
+                    text.text = `${Config.wordCompare}: ${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} times`;
                 }
             }
             if (action[0] == 'swap') {
                 var text = this.canvas.getText(1);
-                if (text.text.replace(/[0-9]/g, '') == `${Config.wordSwap}： 回`) {
-                    text.text = `${Config.wordSwap}：${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} 回`;
+                if (text.text.replace(/[0-9]/g, '') == `${Config.wordSwap}:  times`) {
+                    text.text = `${Config.wordSwap}: ${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} times`;
                 }
             }
         }

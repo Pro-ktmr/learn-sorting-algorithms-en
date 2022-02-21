@@ -1,4 +1,4 @@
 export default class Config {
-    static wordCompare = "比較";
-    static wordSwap = "交換";
+    static wordCompare = "Comparison";
+    static wordSwap = "Swapping";
 }

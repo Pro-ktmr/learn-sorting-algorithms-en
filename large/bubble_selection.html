@@ -5,40 +5,40 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/bar.css" />
     <script src="./js/bubble_selection.js" type="module"></script>
-    <title>バブルソート vs 選択ソート</title>
+    <title>Bubble Sort vs Selection Sort</title>
   </head>
   <body>
     <div class="title_bar">
       <span class="btn_page_back" onclick="window.history.back()"></span>
-      <span id="title">バブルソート vs 選択ソート</span>
+      <span id="title">Bubble Sort vs Selection Sort</span>
     </div>
 
     <div class="container">
 
       <div class="row">
         <div class="control top_round">
-          <span style="font-weight: 700;">バブルソート</span>
+          <span style="font-weight: 700;">Bubble Sort</span>
         </div>
         <div id="animation_bubble" class="animation" style="height: 26vh;">
           読み込み中
         </div>
         <div class="control bottom_round">
           <div class="row">
-            比較：<span id="compare_bubble">0</span> 回&emsp;交換：<span id="swap_bubble">0</span> 回
+            Comparison: <span id="compare_bubble">0</span> times&emsp;Swapping: <span id="swap_bubble">0</span> times
           </div>
         </div>
       </div>
 
       <div class="row">
         <div class="control top_round">
-          <span style="font-weight: 700;">選択ソート</span>
+          <span style="font-weight: 700;">Selection Sort</span>
         </div>
         <div id="animation_selection" class="animation" style="height: 26vh;">
           読み込み中
         </div>
         <div class="control bottom_round">
           <div class="row">
-            比較：<span id="compare_selection">0</span> 回&emsp;交換：<span id="swap_selection">0</span> 回
+            Comparison: <span id="compare_selection">0</span> times&emsp;Swapping: <span id="swap_selection">0</span> times
           </div>
         </div>
       </div>
@@ -46,19 +46,19 @@
       <div class="row">
         <div class="control round">
           <div class="row">
-            <input type="button" id="btn_begin" value="最初に戻す" title="最初に戻す" onclick="begin()" />
-            <input type="button" id="btn_play" value="▶" title="再生/停止する" onclick="play()" />
-            <label for="interval">スピード：</label><input type="range" id="interval" value="4" min="1" max="4" />
+            <input type="button" id="btn_begin" value="Revert" title="Revert" onclick="begin()" />
+            <input type="button" id="btn_play" value="▶" title="Play/Stop" onclick="play()" />
+            <label for="interval">Speed: </label><input type="range" id="interval" value="4" min="1" max="4" />
           </div>
           <div class="row">
-            <input type="text" id="my_input" placeholder="要素数を入力" size="12" list="input_example" value="7" />
+            <input type="text" id="my_input" placeholder="Input the length" size="12" list="input_example" value="7" />
             <datalist id="input_example">
               <option value="7"></option>
               <option value="15"></option>
               <option value="31"></option>
               <option value="63"></option>
             </datalist>
-            <input type="button" value="入力セット" title="入力をセットする" onclick="set()" />
+            <input type="button" value="Set Input" title="Set Input" onclick="set()" />
           </div>
         </div>
       </div>

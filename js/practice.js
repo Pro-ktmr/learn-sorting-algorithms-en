@@ -7,18 +7,18 @@ export default class Practice {
     }
 
     set(array) {
-        // for override
+        // 入力セット
     }
 
     begin() {
-        // for override
+        // 最初から
     }
 
     back() {
-        // for override
+        // 1 つ戻す
     }
 
     canvasChanged(canvas) {
-        // for override
+        // オーバーライド用
     }
 }

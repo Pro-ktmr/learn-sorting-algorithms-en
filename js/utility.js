@@ -1,16 +1,18 @@
 export default class Utility {
-    static easeInOut(t, maxT, a, b) {
+    static easeInOut(t, maxT, a, b) { // a -> a + b
         if (t <= 0) return a;
         if (t >= maxT) return a + b;
-        if ((t /= maxT / 2) < 1)
-            return (b / 2) * Math.pow(2, 10 * (t - 1)) + a;
-        return (b / 2) * (-Math.pow(2, -10 * --t) + 2) + a;
+        t /= maxT / 2; // 0 -> 1 -> 2
+        if (t < 1)
+            return a + (b / 2) * Math.pow(1.2, 30 * (t - 1));
+        return a + b - (b / 2) * Math.pow(1.2, 30 * (1 - t));
     }
 
     static easeOut(t, maxT, a, b) {
         if (t <= 0) return a;
         if (t >= maxT) return a + b;
-        return b * (-Math.pow(2, (-10 * t) / maxT) + 1) + a;
+        t /= maxT;
+        return a + b - b * Math.pow(1.2, -30 * t);
     }
 
     static shuffleArray(a, l, r) {

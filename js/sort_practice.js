@@ -1,4 +1,3 @@
-import Config from './config.js';
 import Practice from './practice.js';
 import Text from './text.js';
 import Utility from './utility.js';
@@ -93,8 +92,7 @@ export default class SortPractice extends Practice {
         if (this.countOpen() == 2) {
             if (this.lastMeaningfulOperation()[0] == 'compareCards'
                 && Utility.compareSets(this.lastMeaningfulOperation()[1], this.getIndexOfCardsOpen())) return;
-            var text = this.canvas.getText(0);
-            text.text = `${Config.wordCompare}: ${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} times`;
+            this.canvas.getText(0).countUp();
             this.operationLog.push(['compareCards', this.getIndexOfCardsOpen()]);
         }
     }
@@ -104,8 +102,7 @@ export default class SortPractice extends Practice {
         card.moveImmediatelyTo(anotherCard.getX(), anotherCard.getY());
         anotherCard.moveImmediatelyTo(tmpX, tmpY);
 
-        var text = this.canvas.getText(1);
-        text.text = `${Config.wordSwap}: ${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} times`;
+        this.canvas.getText(1).countUp();
 
         this.operationLog.push(['swapCards', card, anotherCard]);
     }
@@ -182,8 +179,7 @@ export default class SortPractice extends Practice {
             this.backUnfixCard(operation[1]);
         }
         if (operation[0] == 'compareCards') {
-            var text = this.canvas.getText(0);
-            text.text = `${Config.wordCompare}: ${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} times`;
+            this.canvas.getText(0).countDown();
             this.back();
         }
     }
@@ -197,8 +193,7 @@ export default class SortPractice extends Practice {
         card.moveTo(anotherCard.getX(), anotherCard.getY());
         anotherCard.moveTo(tmpX, tmpY);
 
-        var text = this.canvas.getText(1);
-        text.text = `${Config.wordSwap}: ${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} times`;
+        this.canvas.getText(1).countDown();
     }
 
     backFixCard(card) {
@@ -222,10 +217,6 @@ export default class SortPractice extends Practice {
     }
 
     build() {
-        // for override
-    }
-
-    calculateActions() {
-        // for override
+        // 入力セット時のデータ管理
     }
 }

@@ -1,4 +1,3 @@
-import Config from './config.js';
 import SortPractice from './sort_practice.js';
 import Utility from './utility.js';
 
@@ -28,8 +27,7 @@ export default class SortPracticeStrict extends SortPractice {
                 return;
             }
 
-            var text = this.canvas.getText(0);
-            text.text = `${Config.wordCompare}: ${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} times`;
+            this.canvas.getText(0).countUp();
             this.operationLog.push(['comparePlus']);
 
             if (this.step < this.correctOperations.length
@@ -37,12 +35,10 @@ export default class SortPracticeStrict extends SortPractice {
                 && Utility.compareSets(this.correctOperations[this.step][1], this.getIndexOfCardsOpen())) {
                 this.step++;
                 this.operationLog.push(['stepForward']);
+                this.detectCorrectOperation();
             }
             else {
-                setTimeout(function () {
-                    this.back();
-                    this.canvas.addCross(640, 360).setSize(40, 400);
-                }.bind(this), 200);
+                this.detectWrongOperation();
             }
         }
     }
@@ -52,8 +48,7 @@ export default class SortPracticeStrict extends SortPractice {
         card.moveImmediatelyTo(anotherCard.getX(), anotherCard.getY());
         anotherCard.moveImmediatelyTo(tmpX, tmpY);
 
-        var text = this.canvas.getText(1);
-        text.text = `${Config.wordSwap}: ${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} times`;
+        this.canvas.getText(1).countUp();
 
         this.operationLog.push(['swapCards', card, anotherCard]);
 
@@ -62,12 +57,10 @@ export default class SortPracticeStrict extends SortPractice {
             && Utility.compareSets(this.correctOperations[this.step][1], new Set([this.getIndexOfCard(card), this.getIndexOfCard(anotherCard)]))) {
             this.step++;
             this.operationLog.push(['stepForward']);
+            this.detectCorrectOperation();
         }
         else {
-            setTimeout(function () {
-                this.back();
-                this.canvas.addCross(640, 360).setSize(40, 400);
-            }.bind(this), 200);
+            this.detectWrongOperation();
         }
     }
 
@@ -80,19 +73,24 @@ export default class SortPracticeStrict extends SortPractice {
             && this.correctOperations[this.step][1] == this.getIndexOfCard(card)) {
             this.step++;
             this.operationLog.push(['stepForward']);
+            this.detectCorrectOperation();
         }
         else {
-            setTimeout(function () {
-                this.back();
-                this.canvas.addCross(640, 360).setSize(40, 400);
-            }.bind(this), 200);
+            this.detectWrongOperation();
         }
     }
 
     unfixCard(card) {
         card.unfix();
         this.operationLog.push(['unfixCard', card]);
+        this.detectWrongOperation();
+    }
 
+    detectCorrectOperation() {
+
+    }
+
+    detectWrongOperation() {
         setTimeout(function () {
             this.back();
             this.canvas.addCross(640, 360).setSize(40, 400);
@@ -107,8 +105,7 @@ export default class SortPracticeStrict extends SortPractice {
             this.back();
         }
         if (operation[0] == 'comparePlus') {
-            var text = this.canvas.getText(0);
-            text.text = `${Config.wordCompare}: ${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} times`;
+            this.canvas.getText(0).countDown();
             this.back();
         }
         if (operation[0] == 'turnCard') {
@@ -134,8 +131,7 @@ export default class SortPracticeStrict extends SortPractice {
         card.moveTo(anotherCard.getX(), anotherCard.getY());
         anotherCard.moveTo(tmpX, tmpY);
 
-        var text = this.canvas.getText(1);
-        text.text = `${Config.wordSwap}: ${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} times`;
+        this.canvas.getText(1).countDown();
     }
 
     backFixCard(card) {
@@ -151,10 +147,10 @@ export default class SortPracticeStrict extends SortPractice {
     }
 
     build() {
-        // for override
+        // オーバーライドすべき
     }
 
     calculateActions() {
-        // for override
+        // 操作列を構成
     }
 }

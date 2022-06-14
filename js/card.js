@@ -184,7 +184,7 @@ export default class Card {
     }
 
     moveTo(x2, y2) {
-        const maxT = 40;
+        const maxT = 30;
         this.moving = true;
         var self = this;
         for (var t = 0; t <= maxT; t++) {
@@ -201,7 +201,7 @@ export default class Card {
     }
 
     moveImmediatelyTo(x2, y2) {
-        const maxT = 25;
+        const maxT = 20;
         var self = this;
         for (var t = 0; t <= maxT; t++) {
             setTimeout(function (t, maxT, x1, y1, x2, y2) {

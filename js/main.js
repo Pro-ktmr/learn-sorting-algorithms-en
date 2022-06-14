@@ -1,4 +1,5 @@
 import Utility from './utility.js';
+import Config from './config.js';
 
 import BubbleSortAnimation from './bubble_sort_animation.js';
 import SelectionSortAnimation from './selection_sort_animation.js';
@@ -16,17 +17,9 @@ var animation, practice;
 
 window.onload = function () {
     var algorithmName = Utility.getQuery('algorithm');
-    var algorithmToTitle = {
-        'array_sort': 'Free (Array)',
-        'tree_sort': 'Free (Tree)',
-        'bubble_sort': 'Bubble Sort',
-        'selection_sort': 'Selection Sort',
-        'selection_sort_slow': 'Selection Sort (Slow)',
-        'heap_sort': 'Heap Sort',
-    };
-    if (algorithmName !== null && algorithmName in algorithmToTitle) {
-        document.getElementById('title').innerHTML = algorithmToTitle[algorithmName];
-        document.getElementsByTagName('title')[0].innerHTML = algorithmToTitle[algorithmName];
+    if (algorithmName !== null && algorithmName in Config.algorithmToTitle) {
+        document.getElementById('title').innerHTML = Config.algorithmToTitle[algorithmName];
+        document.getElementsByTagName('title')[0].innerHTML = Config.algorithmToTitle[algorithmName];
     }
 
     if (document.getElementById('animation_canvas')) {
@@ -127,48 +120,20 @@ export function shuffle() {
 
 export function set(id) {
     var input = document.getElementById(id).value;
-
-    const pattern = {
-        'Pattern 1-1': [65, 83, 31, 22, 59, 46, 19],
-        'Pattern 1-2': [92, 20, 85, 50, 37, 76, 61],
-        'Pattern 1-3': [87, 32, 15, 28, 75, 52, 47],
-        'Pattern 2-1': [55, 71, 12, 43, 80, 36, 93],
-        'Pattern 2-2': [40, 22, 18, 93, 51, 67, 34],
-        'Pattern 2-3': [43, 13, 27, 90, 88, 72, 55],
-        'Pattern 3-1': [62, 81, 35, 22, 51, 47, 11],
-        'Pattern 3-2': [26, 87, 57, 93, 34, 70, 68],
-        'Pattern 3-3': [19, 21, 56, 45, 97, 82, 73],
-        'Pattern 3-1 (From the middle)': [62, 81, 35, 22, 51, 47, 11],
-        'Pattern 3-2 (From the middle)': [26, 87, 57, 93, 34, 70, 68],
-        'Pattern 3-3 (From the middle)': [19, 21, 56, 45, 97, 82, 73],
-    };
-    const patternOnTheWayAnimation = {
-        'Pattern 3-1 (From the middle)': 44,
-        'Pattern 3-2 (From the middle)': 49,
-        'Pattern 3-3 (From the middle)': 54,
-    };
-    const patternOnTheWayPractice = {
-        'Pattern 3-1 (From the middle)': 16,
-        'Pattern 3-2 (From the middle)': 19,
-        'Pattern 3-3 (From the middle)': 22,
-    };
-    if (input in pattern) {
+    
+    if (input in Config.pattern) {
         if (animation) {
-            animation.set(pattern[input]);
-            animation.addMessage('Current input: ' + input);
-            if (input in patternOnTheWayAnimation) {
-                for (var i = 0; i < patternOnTheWayAnimation[input]; i++) {
-                    animation.advance();
-                }
+            animation.set(Config.pattern[input]);
+            animation.addMessage('現在の入力: ' + input);
+            if (Config.patternOnTheWay.includes(input) && animation.skipFirstHalf) {
+                animation.skipFirstHalf();
             }
         }
         if (practice) {
-            practice.set(pattern[input]);
-            practice.addMessage('Current input: ' + input);
-            if (input in patternOnTheWayPractice && practice.advanceInternal) {
-                for (var i = 0; i < patternOnTheWayPractice[input]; i++) {
-                    practice.advanceInternal();
-                }
+            practice.set(Config.pattern[input]);
+            practice.addMessage('現在の入力: ' + input);
+            if (Config.patternOnTheWay.includes(input) && practice.skipFirstHalf) {
+                practice.skipFirstHalf();
             }
         }
         document.getElementById(id).value = '';
@@ -176,34 +141,34 @@ export function set(id) {
     }
 
     if (input == '') {
-        alert('Set input after choosing input');
+        alert('入力を選んでから「入力セット」ボタンを押してください');
         return;
     }
     var splits = input.split(',');
     if (splits.length > 7) {
-        alert('The length of input is too long');
+        alert('入力は 7 個までです');
         return;
     }
     var array = [];
     for (var s of splits) {
         var int = parseInt(s);
         if (isNaN(int)) {
-            alert('The format of input is wrong');
+            alert('入力のフォーマットが間違っています');
             return;
         }
         if (int > 999) {
-            alert('A number of input is too large');
+            alert('入力された数が大きすぎます');
             return;
         }
         array.push(parseInt(s));
     }
     if (animation) {
         animation.set(array);
-        animation.addMessage('Current input: ' + input);
+        animation.addMessage('現在の入力: ' + input);
     }
     if (practice) {
         practice.set(array);
-        practice.addMessage('Current input: ' + input);
+        practice.addMessage('現在の入力: ' + input);
     }
     document.getElementById(id).value = '';
 }

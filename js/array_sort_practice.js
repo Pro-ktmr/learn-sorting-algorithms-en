@@ -3,6 +3,7 @@ import Config from './config.js';
 import Grid from './grid.js';
 import SortPractice from './sort_practice.js';
 import Text from './text.js';
+import CounterText from './counter_text.js';
 
 export default class ArraySortPractice extends SortPractice {
     static maxLength = 7;
@@ -32,24 +33,23 @@ export default class ArraySortPractice extends SortPractice {
             card.setSmallPinImage('shadow');
             this.canvas.addCard(card);
         }
-        var compareText = new Text();
-        compareText.setText(`${Config.wordCompare}: 0 times`);
+        var compareText = new CounterText(`${Config.wordCompare}: <counter> ${Config.wordTime}`);
         compareText.setCoordinate(640, 640);
         this.canvas.addText(compareText);
-        var swapText = new Text();
-        swapText.setText(`${Config.wordSwap}: 0 times`);
+        var swapText = new CounterText(`${Config.wordSwap}: <counter> ${Config.wordTime}`);
         swapText.setCoordinate(640, 680);
         this.canvas.addText(swapText);
-
         var smallText = new Text();
-        smallText.setText('Small');
-        smallText.setCoordinate(50, 560);
+        smallText.setText(`${Config.wordSmall}`);
+        smallText.setCoordinate(16, 560);
+        smallText.setTextAlign('left');
         smallText.setFont('24px Noto Sans JP');
         this.canvas.addText(smallText);
-        var bigText = new Text();
-        bigText.setText('Large');
-        bigText.setCoordinate(1220, 560);
-        bigText.setFont('32px Noto Sans JP');
-        this.canvas.addText(bigText);
+        var largeText = new Text();
+        largeText.setText(`${Config.wordLarge}`);
+        largeText.setCoordinate(1264, 560);
+        largeText.setTextAlign('right');
+        largeText.setFont('32px Noto Sans JP');
+        this.canvas.addText(largeText);
     }
 }

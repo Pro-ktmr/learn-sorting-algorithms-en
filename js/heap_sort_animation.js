@@ -2,7 +2,7 @@ import Card from './card.js';
 import Config from './config.js';
 import Grid from './grid.js';
 import SortAnimation from './sort_animation.js';
-import Text from './text.js';
+import CounterText from './counter_text.js';
 import Line from './line.js';
 
 export default class HeapSortAnimation extends SortAnimation {
@@ -25,15 +25,6 @@ export default class HeapSortAnimation extends SortAnimation {
         }
     }
 
-    setMid(array) {
-        this.build(array);
-        this.actions = this.calculateActions(array);
-        this.step = 0;
-        for (var i = 0; i < this.mid; i++) {
-            this.advance();
-        }
-    }
-
     build(array) {
         this.canvas.clearAll();
         for (var i = 0; i < HeapSortAnimation.maxLength; i++) {
@@ -47,12 +38,10 @@ export default class HeapSortAnimation extends SortAnimation {
             card.moveImmediatelyTo(this.posX[i], this.posY[i] + 10);
             this.canvas.addCard(card);
         }
-        var compareText = new Text();
-        compareText.setText(`${Config.wordCompare}: 0 times`);
+        var compareText = new CounterText(`${Config.wordCompare}: <counter> ${Config.wordTime}`);
         compareText.setCoordinate(200, 640);
         this.canvas.addText(compareText);
-        var swapText = new Text();
-        swapText.setText(`${Config.wordSwap}: 0 times`);
+        var swapText = new CounterText(`${Config.wordSwap}: <counter> ${Config.wordTime}`);
         swapText.setCoordinate(200, 680);
         this.canvas.addText(swapText);
 
@@ -116,6 +105,15 @@ export default class HeapSortAnimation extends SortAnimation {
             12 + Math.pow(2, i) * 4 + i - 2 + j * 2 + 1,
             12 + Math.pow(2, i) * 4 + i - 2 + j * 2 + 2,
         ];
+    }
+
+    skipFirstHalf() {
+        console.log("yay");
+        for (var i = 0; i < this.mid; i++) {
+            this.advance();
+            this.actions.shift();
+            this.step = 0;
+        }
     }
 
     calculateActions(array) {

@@ -62,16 +62,10 @@ export default class SortAnimation extends Animation {
                 }
             }
             if (action[0] == 'compare') {
-                var text = this.canvas.getText(0);
-                if (text.text.replace(/[0-9]/g, '') == `${Config.wordCompare}:  times`) {
-                    text.text = `${Config.wordCompare}: ${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} times`;
-                }
+                this.canvas.getText(0).countUp();
             }
             if (action[0] == 'swap') {
-                var text = this.canvas.getText(1);
-                if (text.text.replace(/[0-9]/g, '') == `${Config.wordSwap}:  times`) {
-                    text.text = `${Config.wordSwap}: ${parseInt(text.text.replace(/[^0-9]/g, '')) + 1} times`;
-                }
+                this.canvas.getText(1).countUp();
             }
         }
         this.step++;
@@ -121,23 +115,13 @@ export default class SortAnimation extends Animation {
                 }
             }
             if (action[0] == 'compare') {
-                var text = this.canvas.getText(0);
-                if (text.text.replace(/[0-9]/g, '') == `${Config.wordCompare}:  times`) {
-                    text.text = `${Config.wordCompare}: ${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} times`;
-                }
+                this.canvas.getText(0).countDown();
             }
             if (action[0] == 'swap') {
-                var text = this.canvas.getText(1);
-                if (text.text.replace(/[0-9]/g, '') == `${Config.wordSwap}:  times`) {
-                    text.text = `${Config.wordSwap}: ${parseInt(text.text.replace(/[^0-9]/g, '')) - 1} times`;
-                }
+                this.canvas.getText(1).countDown();
             }
         }
         return 0;
-    }
-
-    mouseMove(x, y) {
-        this.canvas.setMouseCoordinate(x, y);
     }
 
     addMessage(str) {
@@ -149,10 +133,10 @@ export default class SortAnimation extends Animation {
     }
 
     build() {
-        // for override
+        // 入力セット時のデータ管理
     }
 
     calculateActions() {
-        // for override
+        // 操作列を構成
     }
 }

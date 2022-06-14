@@ -7,19 +7,19 @@ export default class Animation {
     }
 
     set(array) {
-        // for override
+        // 入力セット
     }
 
     begin() {
-        // for override
+        // 最初に戻す
     }
 
     advance() {
-        // for override
+        // 1 コマ進める
     }
 
     back() {
-        // for override
+        // 1 コマ戻す
     }
 
     mouseMove(x, y) {
@@ -27,6 +27,6 @@ export default class Animation {
     }
 
     canvasChanged(canvas) {
-        // for override
+        // オーバーライド用
     }
 }

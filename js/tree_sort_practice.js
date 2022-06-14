@@ -2,7 +2,7 @@ import Card from './card.js';
 import Config from './config.js';
 import Grid from './grid.js';
 import SortPractice from './sort_practice.js';
-import Text from './text.js';
+import CounterText from './counter_text.js';
 
 export default class TreeSortPractice extends SortPractice {
     static maxLength = 7;
@@ -38,12 +38,10 @@ export default class TreeSortPractice extends SortPractice {
             card.setSmallPinImage('shadow');
             this.canvas.addCard(card);
         }
-        var compareText = new Text();
-        compareText.setText(`${Config.wordCompare}: 0 times`);
+        var compareText = new CounterText(`${Config.wordCompare}: <counter> ${Config.wordTime}`);
         compareText.setCoordinate(200, 640);
         this.canvas.addText(compareText);
-        var swapText = new Text();
-        swapText.setText(`${Config.wordSwap}: 0 times`);
+        var swapText = new CounterText(`${Config.wordSwap}: <counter> ${Config.wordTime}`);
         swapText.setCoordinate(200, 680);
         this.canvas.addText(swapText);
     }

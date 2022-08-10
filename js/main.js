@@ -124,14 +124,14 @@ export function set(id) {
     if (input in Config.pattern) {
         if (animation) {
             animation.set(Config.pattern[input]);
-            animation.addMessage('現在の入力: ' + input);
+            animation.addMessage(`${Config.wordCurrentInput}: ${input}`);
             if (Config.patternOnTheWay.includes(input) && animation.skipFirstHalf) {
                 animation.skipFirstHalf();
             }
         }
         if (practice) {
             practice.set(Config.pattern[input]);
-            practice.addMessage('現在の入力: ' + input);
+            practice.addMessage(`${Config.wordCurrentInput}: ${input}`);
             if (Config.patternOnTheWay.includes(input) && practice.skipFirstHalf) {
                 practice.skipFirstHalf();
             }
@@ -164,11 +164,11 @@ export function set(id) {
     }
     if (animation) {
         animation.set(array);
-        animation.addMessage('現在の入力: ' + input);
+        animation.addMessage(`${Config.wordCurrentInput}: ${input}`);
     }
     if (practice) {
         practice.set(array);
-        practice.addMessage('現在の入力: ' + input);
+        practice.addMessage(`${Config.wordCurrentInput}: ${input}`);
     }
     document.getElementById(id).value = '';
 }

@@ -4,6 +4,7 @@ export default class Config {
     static wordTime = 'Times ';
     static wordSmall = 'Small';
     static wordLarge = 'Large';
+    static wordCurrentInput = 'Current Input';
 
     static algorithmToTitle = {
         'array_sort': 'Free (Array)',
